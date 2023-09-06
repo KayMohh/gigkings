@@ -35,18 +35,23 @@ class ListingController extends Controller
     //Store listings
     public function store(Request $request)
     {
-        dd($request->all());
-        // $formFields = $request->validate([
-        //     'title' => 'required',
-        //     'company' => ['required', Rule::unique('listings', 'company')],
-        //     'location' => 'required',
-        //     'website' => 'required',
-        //     'tags' => 'required',
-        //     'description' => 'required',
-        //     'email' => ['required', 'email'],
+        // dd($request->all());
+        $formFields = $request->validate([
+            'title' => 'required',
+            'company' => ['required', Rule::unique('listings', 'company')],
+            'location' => 'required',
+            'website' => 'required',
+            'tags' => 'required',
+            'description' => 'required',
+            'email' => ['required', 'email'],
 
-        // ]);
+        ]);
 
-        // return redirect('/');
+        Listing::create($formFields);
+
+
+
+
+        return redirect('/')->with('message', 'Listing Created Successfully!');
     }
 }
