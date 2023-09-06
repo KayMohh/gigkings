@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Faker\Provider\ar_EG\Company;
 
 class ListingController extends Controller
 {
@@ -28,5 +30,23 @@ class ListingController extends Controller
     public function create()
     {
         return view('listings.create');
+    }
+
+    //Store listings
+    public function store(Request $request)
+    {
+        dd($request->all());
+        // $formFields = $request->validate([
+        //     'title' => 'required',
+        //     'company' => ['required', Rule::unique('listings', 'company')],
+        //     'location' => 'required',
+        //     'website' => 'required',
+        //     'tags' => 'required',
+        //     'description' => 'required',
+        //     'email' => ['required', 'email'],
+
+        // ]);
+
+        // return redirect('/');
     }
 }
