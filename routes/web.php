@@ -40,10 +40,13 @@ Route::get('/listings/create', [ListingController::class, 'create']);
 Route::post('/listings', [ListingController::class, 'store']);
 
 //Edit listings
-Route::get('listings/{listings}/edit', [ListingContrller::class, 'edit']);
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 
-//Edit Submit to Update
-Route::put('listings/{{listing}}', [ListingController::class, 'update']);
+//Edit Submit to Update Listings
+Route::put('/listings/{listing}', [ListingController::class, 'update']);
+
+//Delete
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
 
 //Single Listings
 Route::get('/listings/{listing}', [ListingController::class, 'show']);

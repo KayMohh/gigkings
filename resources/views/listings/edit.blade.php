@@ -7,11 +7,10 @@
         <h2 class="text-2xl font-bold uppercase mb-1">
             Edit Gig
         </h2>
-        <p class="mb-4">Edit: {{listing->title}}</p>
+        <p class="mb-4">Edit: {{$listing->title}}</p>
     </header>
 
     <form method="POST" action="/listings/{{$listing->id}}" enctype="multipart/form-data" >
-    
         @csrf
         @method('PUT')
         <div class="mb-6">
@@ -24,7 +23,7 @@
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
                 name="company"
-                value="{{listing->company}}"
+                value="{{$listing->company}}"
                 />
                 @error('company')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -40,7 +39,7 @@
                 class="border border-gray-200 rounded p-2 w-full"
                 name="title"
                 placeholder="Example: Senior Laravel Developer"
-                value="{{listing->title)}}"
+                value="{{$listing->title}}"
                 />
                 @error('title')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -58,7 +57,7 @@
                 class="border border-gray-200 rounded p-2 w-full"
                 name="location"
                 placeholder="Example: Remote, Boston MA, etc"
-                value="{{listing->location)}}"
+                value="{{$listing->location}}"
                 />
                 
                 @error('location')
@@ -74,7 +73,7 @@
                 type="text"
                 class="border border-gray-200 rounded p-2 w-full"
                 name="email"
-                value="{{listing->email)}}"
+                value="{{$listing->email}}"
                 />
                 @error('email')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -92,7 +91,7 @@
             type="text"
             class="border border-gray-200 rounded p-2 w-full"
             name="website"
-            value="{{listing->website)}}"
+            value="{{$listing->website}}"
             />
             @error('website')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -108,7 +107,7 @@
             class="border border-gray-200 rounded p-2 w-full"
             name="tags"
             placeholder="Example: Laravel, Backend, Postgres, etc"
-            value="{{listing->tags)}}"
+            value="{{$listing->tags}}"
             />
             @error('tags')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -147,7 +146,7 @@
         rows="10"
         placeholder="Include tasks, requirements, salary, etc"
         >
-        value="{{listing->description)}}"
+        value="{{$listing->description}}"
     </textarea>
         @error('description')
         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -158,7 +157,7 @@
         <button
                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
             >
-                Create Gig
+                Update Gig
             </button>
             
             <a href="/" class="text-black ml-4"> Back </a>

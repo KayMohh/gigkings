@@ -61,15 +61,16 @@ class ListingController extends Controller
 
     public function edit(Listing $listing)
     {
+        // dd($listing);
         return view('listings.edit', ['listing' => $listing]);
     }
-    //Update
+    // //Update
     public function update(Request $request, Listing $listing)
     {
         // dd($request->all());
         $formFields = $request->validate([
             'title' => 'required',
-            'company' => ['required'],
+            'company' => 'required',
             'location' => 'required',
             'website' => 'required',
             'tags' => 'required',
@@ -81,12 +82,19 @@ class ListingController extends Controller
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
-        $listing->create($formFields);
+        $listing->update($formFields);
 
 
 
 
-        return back()->with('message', 'Listing Created Successfully!');
+        return back()->with('message', 'Listing Updated Successfully!');
+    }
 
+    //Delete Listing
 
+    public function destroy(Listing $listing)
+    {
+        $listing->delete();
+        return redirect('/')->with('message', 'Listing Deleted Successfully');
+    }
 }
