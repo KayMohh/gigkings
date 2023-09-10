@@ -61,7 +61,7 @@ class UserController extends Controller
         $formFields = $request->validate([
 
             'email' => ['required', 'email'],
-            'password' => 'required|confirmed|min:6',
+            'password' => ['required'],
         ]);
 
         if (auth()->attempt($formFields)) {
