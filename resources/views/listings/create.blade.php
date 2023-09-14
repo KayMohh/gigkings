@@ -58,7 +58,7 @@
                 placeholder="Example: Remote, Boston MA, etc"
                 value="{{old('location')}}"
                 />
-                value="{{old('location')}}"
+                
                 @error('location')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
